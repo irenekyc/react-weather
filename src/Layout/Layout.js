@@ -45,6 +45,7 @@ const Layout = ()=>{
         setWeatherdataReady(false)
         if (position.longitude && position.latitude){
             const URL = `${WEATHERURL}/${position.latitude},${position.longitude}`
+            console.log(URL)
             const response= await fetch(URL)
             const data = await response.json()
             setWeatherdata({data})
@@ -61,6 +62,7 @@ const Layout = ()=>{
         setLocation(null)
         if(searchAddress){
         const GEOURL = `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchAddress}.json?types=place&access_token=${MAPAPI}`
+        console.log(GEOURL)
         const response = await fetch(GEOURL)
         const data = await response.json()
         const locations = data.features
@@ -72,6 +74,7 @@ const Layout = ()=>{
         setWeatherdataReady(false)
         setWeatherdata(null)
         const URL = `${WEATHERURL}/${location.lat},${location.long}`
+        console.log(URL)
         const response= await fetch(URL)
         const data = await response.json()
         setWeatherdata({data})
