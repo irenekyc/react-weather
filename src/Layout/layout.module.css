@@ -1,0 +1,50 @@
+.WebContainer{
+    width:100vw;
+
+}
+
+.Header{
+    width:100vw;
+    height:50px;
+    font-size:36px;
+    line-height: 50px;
+    border-bottom: 2px solid #ccc;
+
+}
+
+.NavBar{
+    width:100vw;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.NavBar span{
+    width:150px;
+    padding: 5px;
+}
+
+.SearchBar{
+    width:100vw;
+    height:35px;
+    display: flex;
+    justify-content:center;
+
+    align-items: center;
+}
+
+.ErrBar{
+    height:50px;
+    font-size:18px;
+    line-height: 50px;
+
+    font-weight: 900;
+    background-color: white;;
+}
+
+.MainContent{
+    width:100vw;
+    background: white;
+}
