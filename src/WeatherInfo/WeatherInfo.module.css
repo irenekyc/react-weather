@@ -1,0 +1,56 @@
+
+.CurrentCard{
+    width:350px;
+    margin:auto;
+    text-align: left;
+    padding: 20px 10px;
+}
+
+
+.Normal {
+    font-size:16px;
+    line-height: 20px;
+    margin:0;
+    padding:0;
+}
+
+.Big{
+    font-size: 32px;
+    line-height: 40px;
+    font-weight:500;
+    margin:0;
+    padding:0;
+}
+
+img{
+    width:100px;
+    height:100px;
+    margin:5px;
+    padding:5px;
+}
+.Small{
+    padding:0;
+    margin:0;
+    font-size:10px;
+    line-height:12px;
+}
+
+.textBeauty{
+    text-transform: capitalize;
+}
+
+.Button{
+    cursor: pointer;
+    background: lightcoral;
+    color:white;
+    outline:none;
+    border:none;
+    border-radius: 5px;
+    font-size:14px;
+    line-height: 20px;
+    margin-right:20px;
+}
+
+.Button:hover{
+    background: orangered;
+}

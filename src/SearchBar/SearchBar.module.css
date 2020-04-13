@@ -1,0 +1,28 @@
+.Button {
+    outline:none;
+    border: none;
+    background: lightblue;
+    color:navy;
+    font-size:14px;
+    line-height: 24px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.Button:hover {
+    background: navy;
+    color: lightblue;
+}
+
+.Input {
+    height:14px;
+    padding:5px;
+    font-size:14px;
+    outline:none;
+    border-radius:5px;
+    border:1px solid lightblue
+}
+
+span {
+    padding: 0 10px;
+}

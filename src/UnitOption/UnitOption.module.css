@@ -1,0 +1,11 @@
+.Label {
+    font-size:14px;
+    line-height: 50px;
+}
+
+.Select {
+    font-size:14px;
+    height:24px;
+    outline:none;
+    padding:0 15px;
+}

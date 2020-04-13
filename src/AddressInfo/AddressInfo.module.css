@@ -1,0 +1,20 @@
+.SearchResultContainer{
+
+    padding:20px 10px;
+}
+
+.Strong{
+    color:red;
+    font-weight:900;
+}
+
+.ClickButton{
+    cursor: pointer;
+    color: navy;
+    text-decoration: underline;
+    margin:15px;
+}
+
+.ClickButton:hover{
+    color: black;
+}
