@@ -4,7 +4,7 @@ const addressInfo = (props)=>{
     let foundLocations = []
     let searchResult = " "
     if(props.ready){
-        searchResult = `There are ${props.locations.length} search results`
+        searchResult = `There are ${props.locations.length} search results.`
         props.locations.map((location)=>{
             foundLocations.push({
                 city: location.place_name,

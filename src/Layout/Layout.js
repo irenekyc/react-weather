@@ -73,7 +73,6 @@ const Layout = ()=>{
         setWeatherdataReady(false)
         setWeatherdata(null)
         const URL = `${WEATHERURL}lat=${location.lat}&lon=${location.long}&appid=${WeatherAPIKEY}&units=imperial&lang=zh_cn`
-        console.log(URL)
         const response= await fetch(URL)
         const data = await response.json()
         setWeatherdata({data})
