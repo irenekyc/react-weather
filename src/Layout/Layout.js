@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import style from './layout.module.css'
-// import UseLocation from '../useLocation/UseLocation'
 import SearchBar from '../SearchBar/SearchBar'
 import WeatherInfo from '../WeatherInfo/WeatherInfo'
 import AddressInfo from '../AddressInfo/AddressInfo'
@@ -17,7 +16,7 @@ const Layout = ()=>{
     const [locationsReady, setLocationsReady] = useState(false)
     const WeatherAPIKEY = process.env.REACT_APP_WEATHER_API_KEY
     const MAPAPI = process.env.REACT_APP_MAP_API_KEY
-    const WEATHERURL = `https://api.darksky.net/forecast/${WeatherAPIKEY}`
+    const WEATHERURL = `https://api.openweathermap.org/data/2.5/weather?`
 
     useEffect(() => {
         console.log(weatherdataReady)
@@ -44,8 +43,8 @@ const Layout = ()=>{
         setWeatherdata(null)
         setWeatherdataReady(false)
         if (position.longitude && position.latitude){
-            const URL = `${WEATHERURL}/${position.latitude},${position.longitude}`
-            console.log(URL)
+            const URL = `${WEATHERURL}lat=${position.latitude}&lon=${position.longitude}&appid=${WeatherAPIKEY}&units=imperial`
+
             const response= await fetch(URL)
             const data = await response.json()
             setWeatherdata({data})
@@ -73,7 +72,7 @@ const Layout = ()=>{
         setLocationsReady(false)
         setWeatherdataReady(false)
         setWeatherdata(null)
-        const URL = `${WEATHERURL}/${location.lat},${location.long}`
+        const URL = `${WEATHERURL}lat=${location.lat}&lon=${location.long}&appid=${WeatherAPIKEY}&units=imperial&lang=zh_cn`
         console.log(URL)
         const response= await fetch(URL)
         const data = await response.json()

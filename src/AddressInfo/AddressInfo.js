@@ -2,7 +2,9 @@ import React from 'react'
 
 const addressInfo = (props)=>{
     let foundLocations = []
+    let searchResult = " "
     if(props.ready){
+        searchResult = `There are ${props.locations.length} search results`
         props.locations.map((location)=>{
             foundLocations.push({
                 city: location.place_name,
@@ -18,6 +20,7 @@ const addressInfo = (props)=>{
 
     return (
         <div>
+        {searchResult}
         {props.ready? foundLocations.map((location)=>{
             return <p><a onClick={()=> props.confirmedLocation(location)} key={location.city}>{location.city}</a></p> } )
         : null}
