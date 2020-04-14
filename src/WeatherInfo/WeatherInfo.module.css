@@ -15,11 +15,20 @@
 }
 
 .Big{
-    font-size: 32px;
-    line-height: 40px;
+    font-size: 24px;
+    line-height: 36px;
     font-weight:500;
     margin:0;
     padding:0;
+}
+
+.Bigger{
+    font-size:48px;
+    line-height: 50px;
+    font-weight:900;
+    padding:0;
+    margin:0;
+    margin-top:15px;
 }
 
 img{
@@ -53,4 +62,10 @@ img{
 
 .Button:hover{
     background: orangered;
+}
+
+.weatherIcon i{
+    font-size:58px;
+    line-height:58px;
+    color:orangered;
 }
