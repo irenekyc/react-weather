@@ -8,14 +8,14 @@ const addressInfo = (props)=>{
     if(props.ready){
         searchResult = props.result.length
         props.result.map((location)=>{
-            foundLocations.push({
+             return foundLocations.push({
                 city: location.place_name,
                 long: location.center[0],
                 lat: location.center[1],
             })
         })
         } else {
-            foundLocations = []
+            return foundLocations = []
         }
 
 

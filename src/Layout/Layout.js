@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import WeatherInfo from '../WeatherInfo/WeatherInfo'
 import style from './layout.module.css'
 import SearchBar from '../SearchBar/SearchBar'
@@ -9,7 +9,6 @@ const Layout = ()=>{
   const [position, setPosition] = useState({ready:false})
   const [WeatherData, setWeatherData] = useState()
   const [WeatherDataReady, setWeatherDataReady]= useState(false)
-  const [WeatherDataChange, setWeatherDataChange]= useState(false)
   const [resultLocations, setResultLocations] = useState({ready:false})
   const [City, setCity]=useState()
   const [unit, setUnit]= useState("us")
@@ -23,7 +22,6 @@ const Layout = ()=>{
 
   const resetSearchResult= ()=>{
     setResultLocations ({ready:false, data:null})
- 
   }
 
   const resetWeatherContainer =()=>{
@@ -33,11 +31,10 @@ const Layout = ()=>{
     setShowHourly(false)
   }
   const onChange = ({coords}) => {
-   
     setPosition({
       lat: coords.latitude,
       long: coords.longitude,
-    ready: true
+      ready: true
     });
   };
   const onError = (error) => {
@@ -65,7 +62,6 @@ const getWeather =async (lat,long)=>{
     LA = lat
     LON = long
   }
-  const oldWeather = WeatherData
   const CorsFixed = `https://cors-anywhere.herokuapp.com/`
   const WeatherAPIKEY = process.env.REACT_APP_DARKSKYAPI_KEY
   const URL = `${CorsFixed}https://api.darksky.net/forecast/${WeatherAPIKEY}/${LA},${LON}?units=${unit}`
@@ -116,10 +112,9 @@ const searchLocations = async ()=>{
  }
 
  const selectedLocation = (location)=>{
-    const oldPosition = position
     getWeather(location.lat,location.long)
  }
-
+ 
  const hourlyForecastHandler = ()=>{
   if (showHourly === false){
     setShowHourly(true)
@@ -192,7 +187,6 @@ const getUnitAndUpdate = async (lat,long)=>{
             </div>
           <WeatherInfo 
               ready = {WeatherDataReady}
-              change = {WeatherDataChange}
               data = {WeatherData}
               city={City}
               unit = {unit}
