@@ -3,11 +3,13 @@ import WeatherInfo from '../WeatherInfo/WeatherInfo'
 import style from './layout.module.css'
 import SearchBar from '../SearchBar/SearchBar'
 import AddressInfo from '../AddressInfo/AddressInfo'
+import UnitOption from '../UnitOption/UnitOption'
 
 const Layout = ()=>{
-  const [position, setPosition] = useState({ready:false});
+  const [position, setPosition] = useState({ready:false})
   const [WeatherData, setWeatherData] = useState()
   const [WeatherDataReady, setWeatherDataReady]= useState(false)
+  const [WeatherDataChange, setWeatherDataChange]= useState(false)
   const [resultLocations, setResultLocations] = useState({ready:false})
   const [City, setCity]=useState()
   const [unit, setUnit]= useState("us")
@@ -50,6 +52,8 @@ const Layout = ()=>{
    const watcher = geo.watchPosition(onChange, onError);
     return () => geo.clearWatch(watcher);
   }, []);
+
+ 
  
 const getWeather =async (lat,long)=>{
   resetSearchResult()
@@ -80,6 +84,11 @@ const getCity = async (lat, long)=>{
     else {
       LA = lat
       LON = long
+      setPosition({
+        lat:lat,
+        long:long,
+        ready:true
+      })
     }
   setCity("")
   const GEOURL = `https://api.mapbox.com/geocoding/v5/mapbox.places/${LON},${LA}.json?types=place&access_token=${MAPAPI}`
@@ -126,6 +135,38 @@ const dailyForecastHandler = ()=>{
   }
 }
 
+const getUnitAndUpdate = async (lat,long)=>{
+  const curUnit = unit
+  let newUnit
+  setUnit("")
+  if (curUnit === "us"){
+    newUnit = "si"
+  } else {
+   newUnit ="us"
+  }
+  setUnit(newUnit)
+
+  resetSearchResult()
+  resetWeatherContainer()
+  if(!lat || !long){
+    LA = position.lat
+    LON = position.long
+  } else {
+    LA = lat
+    LON = long
+  }
+  const CorsFixed = `https://cors-anywhere.herokuapp.com/`
+  const WeatherAPIKEY = process.env.REACT_APP_DARKSKYAPI_KEY
+  const URL = `${CorsFixed}https://api.darksky.net/forecast/${WeatherAPIKEY}/${LA},${LON}?units=${newUnit}`
+  const response = await fetch(URL)
+  const data = await response.json()
+  const newWeatherData = data
+  setWeatherData(newWeatherData)
+  setWeatherDataReady(true)
+}
+
+
+
   return(
       <div className={style.WebContainer}> 
 
@@ -133,11 +174,13 @@ const dailyForecastHandler = ()=>{
             <div className={style.FloatLEFT}>
             <span className={style.heading}> Weather Forecast </span><span className={style.Normal}> Design by Irene K.</span> 
             </div>
-            {/* <div className = {style.FloatRIGHT}>
+            <div className = {style.FloatRIGHT}>
             <UnitOption 
-            unitChange = {getUnit}
-            curUnit={unit}/>
-            </div> */}
+            
+            curUnit={unit}
+            confirmChangeUnit = {getUnitAndUpdate}
+            />
+            </div>
             </div>
             <div className={style.SearchBar}>
               <SearchBar 
@@ -149,6 +192,7 @@ const dailyForecastHandler = ()=>{
             </div>
           <WeatherInfo 
               ready = {WeatherDataReady}
+              change = {WeatherDataChange}
               data = {WeatherData}
               city={City}
               unit = {unit}

@@ -14,7 +14,7 @@ const weatherInfo =(props)=>{
     let localTime, curDate, curHour
     let curTimeofDate = "AM"
     
-    if (props.ready){
+    if (props.ready || props.change){
         console.log(props.data)
            Weather ={
                 tempnow: props.data.currently.temperature.toFixed(0),
@@ -65,7 +65,7 @@ const weatherInfo =(props)=>{
         }
     return(
         <div>
-         {props.ready? 
+         {props.ready || props.change ? 
          <div className={style.CurrentCard}>
     
                     <p className={style.Big}> <i class="fas fa-location-arrow"></i> {props.city}</p>

@@ -5,11 +5,13 @@ const unitOption =(props)=>{
     return(
         <div>
         <span className={style.Label}> Unit: </span>
-            <select className={style.Select} onChange={props.unitChange} value={props.curUnit}>
+     
+            <select className={style.Select} onChange={props.confirmChangeUnit} value={props.curUnit}>
                       <option value="si">Celsius</option>
                       <option value="us">Fahrenheit</option>
             </select>
-
+            
+  
         </div>
     )
 }
