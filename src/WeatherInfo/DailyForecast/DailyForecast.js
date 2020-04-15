@@ -5,7 +5,7 @@ const dailyForecast = (props)=>{
     return (
         <div>
         {props.show? 
-        props.data.map((e)=> <WeatherCard  timezone = {props.timezone} type={"daily"} data={e} />)
+        props.data.map((e)=> <WeatherCard  unit={props.unit} timezone = {props.timezone} type={"daily"} data={e} />)
         : null }
          </div>
     )

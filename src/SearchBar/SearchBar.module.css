@@ -1,8 +1,8 @@
 .Button {
     outline:none;
     border: none;
-    background: lightblue;
-    color:navy;
+    background: #66CCFF;
+    color:#005183;
     font-size:14px;
     line-height: 24px;
     cursor: pointer;
@@ -10,8 +10,8 @@
 }
 
 .Button:hover {
-    background: navy;
-    color: lightblue;
+    background: #0082B9;
+    color: white;
 }
 
 .Input {
@@ -20,7 +20,7 @@
     font-size:14px;
     outline:none;
     border-radius:5px;
-    border:1px solid lightblue
+    border:1px solid #66CCFF;
 }
 
 span {

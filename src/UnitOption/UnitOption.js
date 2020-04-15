@@ -6,8 +6,8 @@ const unitOption =(props)=>{
         <div>
         <span className={style.Label}> Unit: </span>
             <select className={style.Select} onChange={props.unitChange} value={props.curUnit}>
-                      <option value="metric">Celsius</option>
-                      <option value="imperial">Fahrenheit</option>
+                      <option value="si">Celsius</option>
+                      <option value="us">Fahrenheit</option>
             </select>
 
         </div>

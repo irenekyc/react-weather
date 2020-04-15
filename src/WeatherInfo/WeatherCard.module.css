@@ -1,0 +1,35 @@
+.WeatherCARD {
+    width:100%;
+    height:100px;
+    margin-top:10px;
+    padding: 15px;
+    box-shadow: 0 1px 10px rgb(211, 215, 216);
+}
+
+.WeatherCARD p {
+    margin:0;
+    padding:0;
+}
+
+.Time{
+    height:30px;
+    width:100%;
+    font-size:16px;
+    line-height: 30px;
+}
+
+.ICON i{
+    font-size: 36px;
+}
+
+.SUMMARY{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:10px 0;
+}
+
+.BOLD{
+    font-weight: 700;
+}
+

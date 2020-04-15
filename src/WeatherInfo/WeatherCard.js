@@ -1,5 +1,6 @@
 import React from 'react'
 import WeatherIcon from './WeatherIcon'
+import style from './WeatherCard.module.css'
 
 const weatherCard = (props)=>{
     let hour
@@ -22,15 +23,39 @@ const weatherCard = (props)=>{
         const dayIndex = new Date(new Date(props.data.time*1000).toLocaleString("en-US", {timeZone: props.timezone})).getDay()
         day = ['Sun', 'Mon', 'Tue', 'Wed', 'Thurs', 'Fri', 'Sat'][dayIndex]
     }
-    return (
-        <div>
-        <WeatherIcon icon={props.data.icon} />
-        <p> {props.data.summary} </p>
-        <p> {hour} {timeofDate} </p>
-        <p> {date} , {day}</p>
 
+    
+
+   
+    return (
+        <div className={style.WeatherCARD}>
+            {props.type==="hourly"? 
+            <div>
+            <div className={style.TIME}>
+                <p > {hour} {timeofDate} </p>
+            </div>
+            <div className={style.SUMMARY}>  
+            <p className={style.ICON}><WeatherIcon icon={props.data.icon} /></p>
+            <p className={style.BOLD}> {props.data.summary} </p>
+            <p className={style.BOLD}> {props.data.temperature.toFixed(0)} {props.unit} </p>
+            </div>
+            </div> :
+            <div>   
+                 <div>
+            <div className={style.TIME}>
+                <p > {date}, {day} </p>
+            </div>
+            <div className={style.SUMMARY}>  
+            <p className={style.ICON}><WeatherIcon icon={props.data.icon} /></p>
+            <p > {props.data.temperatureLow.toFixed(0)} / {props.data.temperatureHigh.toFixed(0)}  {props.unit} </p>
+            </div>
+            
+            <p > {props.data.summary} </p>
+            </div>
+        </div>}
         </div>
     )
+
 }
 
 export default weatherCard
